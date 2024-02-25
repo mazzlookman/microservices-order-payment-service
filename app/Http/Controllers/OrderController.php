@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Midtrans\Config;
@@ -10,6 +11,22 @@ use Midtrans\Snap;
 
 class OrderController extends Controller
 {
+    public function getByUserId(Request $request)
+    {
+        $userId = $request->input("user_id");
+        $order = Order::query();
+
+        $order->when(isset($userId), function (Builder $query) use ($userId){
+            $query->where("user_id", $userId);
+        });
+
+        return response()->json([
+            "code" => 200,
+            "status" => "OK",
+            "data" => $order
+        ]);
+    }
+
     public function create(Request $request)
     {
         $user = $request->input("user");
