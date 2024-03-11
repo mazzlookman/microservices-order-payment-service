@@ -13,7 +13,6 @@ class WebhookController extends Controller
     {
         try {
             $req = $request->all();
-//            echo "<pre>".print_r($req)."</pre>";
             $signatureKey = $req["signature_key"];
 
             $oriSignatureKey = hash(
