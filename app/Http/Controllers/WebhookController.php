@@ -17,7 +17,7 @@ class WebhookController extends Controller
 
             $oriSignatureKey = hash(
                 "sha512",
-                $req["order_id"] . $req["status_code"] . $req["gross_amount"] . getenv("MIDTRANS_SERVER_KEY")
+                $req["order_id"] . $req["status_code"] . $req["gross_amount"] . env("MIDTRANS_SERVER_KEY")
             );
 
             $transactionStatus = $req["transaction_status"];

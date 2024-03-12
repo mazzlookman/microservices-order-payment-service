@@ -106,8 +106,7 @@ class OrderController extends Controller
     public function getMidtransSnapUrl(array $request)
     {
         // Set your Merchant Server Key
-        // Jika hanya ingin mendapatkan nilai env-nya, gunakan getenv()
-        Config::$serverKey = getenv("MIDTRANS_SERVER_KEY");
+        Config::$serverKey = env("MIDTRANS_SERVER_KEY");
 
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         // Kalo nilai dari .env ingin dikonveri, gunakan function env()

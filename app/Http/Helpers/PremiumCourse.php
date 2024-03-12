@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Http;
 
 function createPremiumAccess($request)
 {
-    $url = getenv("COURSE_SERVICE_URL") . "/api/my-courses/premium";
+    $url = env("COURSE_SERVICE_URL") . "/api/my-courses/premium";
     try {
         $response = Http::post($url , $request);
         return $response->json();
